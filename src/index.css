@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f5f7fa;
+}
+
+.app-container {
+  min-height: 100vh;
+}
+
+.content-container {
+  position: relative;
+  z-index: 10;
+}
+
+.bg-gradient-custom {
+  background: linear-gradient(270deg, #16074C 0%, #302C79 100%);
+}
+
+/* Custom font classes */
+.font-bai-jamjuree {
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Custom text colors */
+.text-pink-light {
+  color: #FFE2F1;
+}
+
+.text-pink-light-transparent {
+  color: rgba(250, 216, 234, 0.61);
+}
+
+/* Custom border colors */
+.border-pink-light {
+  border-color: #FAD8EA;
+}
