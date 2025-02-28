@@ -2,11 +2,13 @@
 import React from 'react';
 import RegisterButton from './RegisterButton';
 import campus from '../assets/images/institueimg.svg';
+import sidebgright from '../assets/images/bg1.svg';
+import sidebgleft from '../assets/images/bg2.svg';
 
 const Hero: React.FC = () => {
   return (
     <div className="bg-gradient-custom text-white py-16 px-4 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto text-center">
+      <div className="max-w-7xl mx-auto text-center relative z-10">
         <h1 
           className="text-[100px] md:text-[200px] font-bold mb-6"
           style={{ 
@@ -42,6 +44,20 @@ const Hero: React.FC = () => {
           <img src={campus} alt="Campus" className="w-full max-w-4xl mx-auto" />
         </div>      
       </div>
+      
+      {/* Left side background image - positioned at bottom */}
+      <img 
+        src={sidebgleft} 
+        alt="Background Left" 
+        className="absolute left-0 bottom-0 h-3/4 w-auto object-cover z-0" 
+      />
+      
+      {/* Right side background image - positioned at bottom */}
+      <img 
+        src={sidebgright} 
+        alt="Background Right" 
+        className="absolute right-0 bottom-0 h-3/4 w-auto object-cover z-0" 
+      />
     </div>
   );
 };
