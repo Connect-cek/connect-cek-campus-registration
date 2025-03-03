@@ -20,6 +20,14 @@ const Navbar: React.FC = () => {
     lineHeight: 'normal',
   };
   
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false); // Close mobile menu after clicking
+    }
+  };
+  
   return (
     <nav className="bg-gradient-custom text-white p-4" style={navStyle}>
       <div className="container mx-auto flex items-center h-full">
@@ -28,9 +36,27 @@ const Navbar: React.FC = () => {
         </div>
         
         <div className="hidden md:flex flex-1 justify-center space-x-12">
-          <a href="#about" className="hover:text-indigo-200" style={linkStyle}>About</a>
-          <a href="#how-it-works" className="hover:text-indigo-200" style={linkStyle}>How It Works</a>
-          <a href="#features" className="hover:text-indigo-200" style={linkStyle}>Features</a>
+          <button 
+            onClick={() => scrollToSection('features-section')} 
+            className="hover:text-indigo-200" 
+            style={linkStyle}
+          >
+            About
+          </button>
+          <button 
+            onClick={() => scrollToSection('networking')} 
+            className="hover:text-indigo-200" 
+            style={linkStyle}
+          >
+            How It Works
+          </button>
+          <button 
+            onClick={() => scrollToSection('features')} 
+            className="hover:text-indigo-200" 
+            style={linkStyle}
+          >
+            Features
+          </button>
         </div>
         
         <button 
@@ -45,9 +71,27 @@ const Navbar: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-indigo-800 py-2">
           <div className="container mx-auto px-4 flex flex-col space-y-2">
-            <a href="#about" className="block py-2 hover:bg-indigo-700 px-2 rounded" style={linkStyle}>About</a>
-            <a href="#how-it-works" className="block py-2 hover:bg-indigo-700 px-2 rounded" style={linkStyle}>How It Works</a>
-            <a href="#features" className="block py-2 hover:bg-indigo-700 px-2 rounded" style={linkStyle}>Features</a>
+            <button 
+              onClick={() => scrollToSection('features-section')} 
+              className="block text-left py-2 hover:bg-indigo-700 px-2 rounded" 
+              style={linkStyle}
+            >
+              About
+            </button>
+            <button 
+              onClick={() => scrollToSection('networking')} 
+              className="block text-left py-2 hover:bg-indigo-700 px-2 rounded" 
+              style={linkStyle}
+            >
+              How It Works
+            </button>
+            <button 
+              onClick={() => scrollToSection('features')} 
+              className="block text-left py-2 hover:bg-indigo-700 px-2 rounded" 
+              style={linkStyle}
+            >
+              Features
+            </button>
           </div>
         </div>
       )}
