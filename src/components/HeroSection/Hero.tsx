@@ -1,9 +1,9 @@
 // components/Hero.tsx
 import React from 'react';
 import RegisterButton from './RegisterButton';
-import campus from '../assets/images/institueimg.svg';
-import sidebgright from '../assets/images/bg1.svg';
-import sidebgleft from '../assets/images/bg2.svg';
+import campus from '../../assets/images/institueimg.svg';
+import sidebgright from '../../assets/images/bg1.svg';
+import sidebgleft from '../../assets/images/bg2.svg';
 
 const Hero: React.FC = () => {
   return (
