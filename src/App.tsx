@@ -10,6 +10,10 @@ import Admincred from './pages/Admincred';
 import Regcollege from './pages/Regcollege';
 import Regform from './pages/Regform';
 import RegOTP from './pages/RegOTP';
+// import FeedWall from "./feedsection/feedwall";  
+// import ChatPage from "./feedsection/chats";
+// import MyNetwork from "./feedsection/mynetwork";
+
 
 const App: React.FC = () => {
   return (
@@ -33,6 +37,7 @@ const App: React.FC = () => {
               </div>
             </>
           } />
+          
           <Route path="/1" element={<Admincred />} />
           <Route path="/register" element={<Regcollege />} />
           <Route path="/3" element={<Regform />} />
