@@ -40,6 +40,11 @@ const App: React.FC = () => {
             </>
           } />
           
+
+
+          {/* <Route path="/chats" element={<ChatPage/>}/>
+          <Route path="/mynetwork" element={<MyNetwork/>}/>
+          <Route path="/feeds" element={<FeedWall/>}/> */}
           <Route path="/1" element={<Admincred />} />
           <Route path="/register" element={<Regcollege />} />
           <Route path="/3" element={<Regform />} />
