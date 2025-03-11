@@ -1,64 +1,77 @@
-import React from "react";
 import { Bell, MessageCircle, Search, User, Image, Calendar, FileText, ThumbsUp, Repeat, Send, PlusCircle } from "lucide-react";
 import Dashbar from "../components/Dashnavbar";
+import Logo from '../assets/icons/connectlogo.svg';
+import React, { useState } from "react";
+
+
+
+
 
 const DashboardPage: React.FC = () => {
+
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleLikeClick = () => {
+    setIsLiked(!isLiked); // Toggle the liked state
+  };
+
+
   return (
-    <div className="bg-[#FAE9E4] min-h-screen p-4">
+    <div className="bg-[#FAE9E4] min-h-screen p-4 pt-16"> 
       {/* Navbar */}
       <Dashbar />
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
 
 
-      {/* Left Sidebar */}
-<div className="hidden md:block space-y-4">
-  {/* College Information Card */}
-  <div className="bg-white p-4 shadow-md rounded-lg">
-    {/* Cover Image */}
-    <div className="rounded-md overflow-hidden mb-4">
-      <img
-        src="URL_TO_COVER_IMAGE" // Replace with your cover image URL
-        alt="College Cover"
-        className="object-cover w-full h-40" // Adjusted height for better visual match
-      />
-    </div>
+        {/* Left Sidebar */}
+        <div className="hidden md:block space-y-4">
+          {/* College Information Card */}
+          <div className="bg-white p-4 shadow-md rounded-lg">
+            {/* Cover Image */}
+            <div className="rounded-md overflow-hidden mb-4">
+              <img
+                src="URL_TO_COVER_IMAGE" // Replace with your cover image URL
+                alt="College Cover"
+                className="object-cover w-full h-40" // Adjusted height for better visual match
+              />
+            </div>
 
-    {/* Profile Picture and College Name */}
-    <div className="flex items-center mb-4"> {/* Flex container for profile pic and name */}
-      <div className="rounded-full h-16 w-16 overflow-hidden border-2 border-gray-200 mr-4"> {/* Increased profile pic size */}
-        <img
-          src="URL_TO_PROFILE_PICTURE" // Replace with your profile picture URL
-          alt="College Profile"
-          className="object-cover w-full h-full"
-        />
-      </div>
-      {/* College Name and Location */}
-      <div>
-        <h2 className="text-xl font-semibold">Marian Engineering College</h2>
-        <p className="text-sm text-gray-500">Menamkulam, Kazhakootam</p>
-      </div>
-    </div>
+            {/* Profile Picture and College Name */}
+            <div className="flex items-center mb-4"> {/* Flex container for profile pic and name */}
+              <div className="rounded-full h-16 w-16 overflow-hidden border-2 border-gray-200 mr-4"> {/* Increased profile pic size */}
+                <img
+                  src="URL_TO_PROFILE_PICTURE" // Replace with your profile picture URL
+                  alt="College Profile"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              {/* College Name and Location */}
+              <div>
+                <h2 className="text-xl font-semibold">Marian Engineering College</h2>
+                <p className="text-sm text-gray-500">Menamkulam, Kazhakootam</p>
+              </div>
+            </div>
 
-    {/* College Details */}
-    <div className="mt-2 space-y-2"> {/* Reduced margin-top for closer details */}
-      <p className="text-sm"><span className="font-medium">Founded in:</span> 2005</p>
-      <p className="text-sm"><span className="font-medium">Registered on:</span> 2/2/2025</p>
-      <p className="text-sm"><span className="font-medium">Students:</span> 5000</p>
-    </div>
+            {/* College Details */}
+            <div className="mt-2 space-y-2"> {/* Reduced margin-top for closer details */}
+              <p className="text-sm"><span className="font-medium">Founded in:</span> 2005</p>
+              <p className="text-sm"><span className="font-medium">Registered on:</span> 2/2/2025</p>
+              <p className="text-sm"><span className="font-medium">Students:</span> 5000</p>
+            </div>
 
-    {/* Dashboard Button */}
-    <div className="flex justify-center mt-4"> {/* Centering the button */}
-      <button className="p-2 rounded-md hover:bg-gray-100 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 mr-2 text-gray-700">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M20.25 16.875l-2.25-2.25m-2.25 2.25l-2.25-2.25m2.25 2.25v2.25" />
-        </svg>
-        <span className="text-gray-700">Dashboard</span>
-      </button>
-    </div>
+            {/* Dashboard Button */}
+            <div className="flex justify-center mt-4"> {/* Centering the button */}
+              <button className="p-2 rounded-md hover:bg-gray-100 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 mr-2 text-gray-700">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M20.25 16.875l-2.25-2.25m-2.25 2.25l-2.25-2.25m2.25 2.25v2.25" />
+                </svg>
+                <span className="text-gray-700">Dashboard</span>
+              </button>
+            </div>
 
-  </div>
-</div>
+          </div>
+        </div>
 
 
         {/* Main Content */}
@@ -108,17 +121,37 @@ const DashboardPage: React.FC = () => {
                   <p className="text-xs text-gray-400">2h</p>
                 </div>
               </div>
-              <button className="text-blue-500">+ Follow</button>
+
+              <button className="flex items-center border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-100 transition">
+                <PlusCircle size={16} className="text-gray-600" />
+                <span className="text-sm hidden lg:inline">Follow</span>
+              </button>
+
             </div>
             <p className="mt-4 text-gray-700">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi...
             </p>
             <img src="/post-image.jpg" alt="Post" className="w-full mt-4 rounded-lg" />
             <div className="flex justify-between mt-4">
-              <button className="flex items-center space-x-1 text-gray-600 hover:text-gray-900">
-                <ThumbsUp size={18} />
+
+
+              
+              {/* Like Button */}
+              <button
+                onClick={handleLikeClick}
+                className={`flex items-center space-x-1 ${isLiked ? "text-blue-500" : "text-gray-600"
+                  } hover:text-gray-900 transition-all duration-300`}
+              >
+                <ThumbsUp
+                  size={18}
+                  className={`${isLiked ? "fill-blue-500 text-blue-500" : "text-gray-600"
+                    } transition-all duration-300 ${isLiked ? "scale-110" : "scale-100"
+                    }`}
+                />
                 <span className="hidden sm:inline">Like</span>
               </button>
+
+
               <button className="flex items-center space-x-1 text-gray-600 hover:text-gray-900">
                 <MessageCircle size={18} />
                 <span className="hidden sm:inline">Comment</span>
@@ -183,7 +216,7 @@ const DashboardPage: React.FC = () => {
                 </div>
               ))}
             </div>
-            <button className="text-blue-500 w-full mt-4 hover:underline">View all recommendations</button>
+            <button className="text-grey-500 w-full mt-4 hover:underline">View all recommendations</button>
           </div>
 
 
@@ -204,7 +237,8 @@ const DashboardPage: React.FC = () => {
 
           {/* Logo Section */}
           <div className="flex justify-center mt-4">
-            <img src="/path-to-your-logo.png" alt="Logo" className="w-24 sm:w-32" />
+            <img src={Logo} alt="Logo" className="w-31 h-31" />
+
           </div>
 
 

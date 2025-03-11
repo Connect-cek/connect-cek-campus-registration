@@ -25,8 +25,8 @@ const Mynetwork: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#FCEAE4]">
-            {/* Navbar */}
+        <div className="bg-[#FAE9E4] min-h-screen p-4 pt-16"> 
+        {/* Navbar */}
             <Dashbar />
 
             {/* Content */}
