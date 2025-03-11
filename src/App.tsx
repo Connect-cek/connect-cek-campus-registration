@@ -50,8 +50,8 @@ const App: React.FC = () => {
           <Route path="/3" element={<Regform />} />
           <Route path="/verify" element={<RegOTP />} />
           <Route path="/4" element={<Adminregs />} />
-          <Route path="/5" element={<VerificationPage />} />
-          <Route path="/feedwall" element={<FeedWall />} />
+          <Route path="/waiting" element={<VerificationPage />} />
+          <Route path="/n" element={<FeedWall />} />
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/mynetwork" element={<MyNetwork />} />
         </Routes>

@@ -11,6 +11,7 @@ const RegOTP: React.FC = () => {
     const [otp, setOtp] = useState(["", "", "", "", "", ""]);
     const [verified, setVerified] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [resending, setResending] = useState(false);
     const [error, setError] = useState("");
     const otpRefs = useRef<Array<HTMLInputElement | null>>([null, null, null, null, null, null]);
 
@@ -37,9 +38,14 @@ const RegOTP: React.FC = () => {
         }
     };
 
-    const handleResendOtp = () => {
-        dispatch(resendOtp());
-        dispatch(sendOtp(email));
+    const handleResendOtp = async () => {
+        setResending(true);
+        try {
+            await dispatch(resendOtp());
+            await dispatch(sendOtp(email));
+        } finally {
+            setResending(false);
+        }
     };
 
     const verifyOtp = async () => {
@@ -56,7 +62,7 @@ const RegOTP: React.FC = () => {
                 console.log("OTP verified", response.data);
                 setVerified(true);
                 setTimeout(() => {
-                    navigate("/3");
+                    navigate("/waiting");
                 }, 2000);
             }
         } catch (err) {
@@ -106,7 +112,7 @@ const RegOTP: React.FC = () => {
                                 className="text-blue-500 text-sm mb-6 cursor-pointer hover:underline"
                                 onClick={handleResendOtp}
                             >
-                                resend
+                                {resending ? "Resending..." : "resend"}
                             </p>
 
                             <button
@@ -131,9 +137,9 @@ const RegOTP: React.FC = () => {
                             <button
                                 onClick={handleResendOtp}
                                 className="bg-[#2C2C6C] text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-[#1A1A5A]"
-                                disabled={loading}
+                                disabled={resending}
                             >
-                                {loading ? "Resending OTP..." : "Resend OTP"}
+                                {resending ? "Resending OTP..." : "Resend OTP"}
                             </button>
                         </>
                     )}
