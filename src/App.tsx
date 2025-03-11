@@ -10,9 +10,11 @@ import Admincred from './pages/Admincred';
 import Regcollege from './pages/Regcollege';
 import Regform from './pages/Regform';
 import RegOTP from './pages/RegOTP';
-// import FeedWall from "./feedsection/feedwall";  
-// import ChatPage from "./feedsection/chats";
-// import MyNetwork from "./feedsection/mynetwork";
+import Adminregs from './pages/Adminregsuss';
+import VerificationPage from './pages/verificationprog';
+import FeedWall from "./feedsection/feedwall";  
+import ChatPage from "./feedsection/chats";
+import MyNetwork from "./feedsection/mynetwork";
 
 
 const App: React.FC = () => {
@@ -42,6 +44,11 @@ const App: React.FC = () => {
           <Route path="/register" element={<Regcollege />} />
           <Route path="/3" element={<Regform />} />
           <Route path="/verify" element={<RegOTP />} />
+          <Route path="/4" element={<Adminregs />} />
+          <Route path="/5" element={<VerificationPage />} />
+          <Route path="/feedwall" element={<FeedWall />} />
+          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/mynetwork" element={<MyNetwork />} />
         </Routes>
         <Footer />
       </div>
