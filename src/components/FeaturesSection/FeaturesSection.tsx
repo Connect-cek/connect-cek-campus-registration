@@ -32,16 +32,17 @@ const FeaturesSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="lg:w-1/3 flex justify-end items-end">
+              <div className="lg:w-1/3 flex justify-end items-end relative">
                 <img
                   src={aboutImage1}
                   alt="Students connecting"
-                  className="w-32 h-32 md:w-40 md:h-40"
+                  className="w-32 h-32 md:w-40 md:h-40 mr-[-15px] mb-[-19px]"
                 />
               </div>
+
             </div>
           </div>
-          
+
           {/* Right column - Why Connect? */}
           <div className="bg-white rounded-[2rem] p-8">
             <h2

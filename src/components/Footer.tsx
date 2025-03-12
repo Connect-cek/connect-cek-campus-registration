@@ -3,8 +3,8 @@ import Logo from './Logo';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-indigo-900 text-white py-8">
-      <div className="container mx-auto px-4">
+    <footer className="bg-gradient-custom text-white py-8 px-4 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <Logo />
@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
               Connecting students, faculty, and alumni since 2025
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-lg font-semibold mb-3">Platform</h3>
@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
                 <li><a href="#faq" className="text-indigo-200 hover:text-white">FAQ</a></li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-semibold mb-3">Company</h3>
               <ul className="space-y-2">
@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
                 <li><a href="#contact" className="text-indigo-200 hover:text-white">Contact</a></li>
               </ul>
             </div>
-            
+
             <div className="col-span-2 md:col-span-1">
               <h3 className="text-lg font-semibold mb-3">Legal</h3>
               <ul className="space-y-2">
@@ -41,9 +41,9 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        
-        <div className="border-t border-indigo-800 mt-8 pt-8 text-center text-indigo-300 text-sm">
-          <p>&copy; {new Date().getFullYear()} Connect. All rights reserved.</p>
+
+        <div className="border-t border-indigo-900 mt-8 pt-8 text-center text-indigo-300 text-sm">
+          <p>&copy; {new Date().getFullYear()} Connect. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
