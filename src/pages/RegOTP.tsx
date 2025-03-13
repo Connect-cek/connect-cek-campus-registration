@@ -91,10 +91,21 @@ const RegOTP: React.FC = () => {
             });
             return;
         }
-
+    
+        // Add validation for email
+        if (!email) {
+            dispatch({ 
+                type: "otp/verifyOtp/rejected", 
+                payload: "Email is required" 
+            });
+            return;
+        }
+    
+        console.log('Attempting to verify OTP:', { email, otpCode });
+        
         dispatch(clearErrors());
         try {
-            await dispatch(verifyOtp({ email, otpCode }));
+            await dispatch(verifyOtp({ email, otpCode })).unwrap();
         } catch (err) {
             console.error("Verification error:", err);
         }

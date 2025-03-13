@@ -17,6 +17,7 @@ import FeedWall from "./feedsection/feedwall";
 import ChatPage from "./feedsection/chats";
 import MyNetwork from "./feedsection/mynetwork";
 import PageTransition from './components/PageTransition';
+import AdminLogin from './pages/AdminLogin';
 
 // Debugging component to verify routes are being accessed
 const RouteDebugger: React.FC<{name: string, children: React.ReactNode}> = ({ name, children }) => {
@@ -71,6 +72,7 @@ const AnimatedRoutes: React.FC = () => {
         <Route path="/n" element={<RouteDebugger name="FeedWall"><PageTransition><FeedWall /></PageTransition></RouteDebugger>} />
         <Route path="/chat" element={<RouteDebugger name="ChatPage"><PageTransition><ChatPage /></PageTransition></RouteDebugger>} />
         <Route path="/mynetwork" element={<RouteDebugger name="MyNetwork"><PageTransition><MyNetwork /></PageTransition></RouteDebugger>} />
+        <Route path="/login/admin" element={<RouteDebugger name="AdminLogin"><PageTransition><AdminLogin /></PageTransition></RouteDebugger>} />
       </Routes>
     </AnimatePresence>
   );

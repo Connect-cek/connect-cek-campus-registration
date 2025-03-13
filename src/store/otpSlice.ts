@@ -33,21 +33,35 @@ export const verifyOtp = createAsyncThunk(
     'otp/verifyOtp',
     async ({ email, otpCode }: { email: string, otpCode: string }, { rejectWithValue }) => {
         try {
+            console.log('Sending verification request:', { email, otp_code: otpCode });
+            
             const response = await api.post('/auth/verify-otp', { 
                 email, 
-                otp_code: otpCode // Keep this parameter name consistent
+                otp_code: otpCode 
             });
             
-            console.log('Verification response:', response.data); // Add logging for debugging
+            console.log('Verification response:', response.data);
             
-            // Return the data so it's available in the fulfilled case
+            if (response.data.access_token) {
+                localStorage.setItem('token', response.data.access_token);
+            }
+            
             return response.data;
-        } catch (error) {
+        } catch (error: any) {
             console.error('OTP verification error:', error);
-            // Return a user-friendly error message
-            return rejectWithValue(
-                error?.message || 'Invalid or expired OTP. Please try again.'
-            );
+            
+            // Handle different types of errors
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                return rejectWithValue(error.response.data.detail || 'Verification failed');
+            } else if (error.request) {
+                // The request was made but no response was received
+                return rejectWithValue('No response from server');
+            } else {
+                // Something happened in setting up the request
+                return rejectWithValue(error.message || 'An error occurred');
+            }
         }
     }
 );
