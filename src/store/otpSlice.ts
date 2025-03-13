@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import api from '../services/api'; // Make sure to import your updated API service
 
 interface OTPState {
     email: string;
     otpSent: boolean;
     loading: boolean;
     error: string | null;
+    accessToken: string | null;
 }
 
 const initialState: OTPState = {
@@ -13,16 +14,40 @@ const initialState: OTPState = {
     otpSent: false,
     loading: false,
     error: null,
+    accessToken: null,
 };
 
 export const sendOtp = createAsyncThunk(
     'otp/sendOtp',
     async (email: string, { rejectWithValue }) => {
         try {
-            const response = await axios.post('http://localhost:8000/auth/send-otp', { email });
+            const response = await api.post('/auth/send-otp', { email });
             return response.data;
         } catch (error) {
-            return rejectWithValue('Failed to send OTP. Please try again.');
+            return rejectWithValue(error?.message || 'Failed to send OTP. Please try again.');
+        }
+    }
+);
+
+export const verifyOtp = createAsyncThunk(
+    'otp/verifyOtp',
+    async ({ email, otpCode }: { email: string, otpCode: string }, { rejectWithValue }) => {
+        try {
+            const response = await api.post('/auth/verify-otp', { 
+                email, 
+                otp_code: otpCode // Keep this parameter name consistent
+            });
+            
+            console.log('Verification response:', response.data); // Add logging for debugging
+            
+            // Return the data so it's available in the fulfilled case
+            return response.data;
+        } catch (error) {
+            console.error('OTP verification error:', error);
+            // Return a user-friendly error message
+            return rejectWithValue(
+                error?.message || 'Invalid or expired OTP. Please try again.'
+            );
         }
     }
 );
@@ -37,6 +62,9 @@ export const otpSlice = createSlice({
         resendOtp: (state) => {
             state.otpSent = false;
         },
+        clearErrors: (state) => {
+            state.error = null;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -47,14 +75,33 @@ export const otpSlice = createSlice({
             .addCase(sendOtp.fulfilled, (state) => {
                 state.loading = false;
                 state.otpSent = true;
+                state.error = null;
             })
             .addCase(sendOtp.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload as string;
+            })
+            .addCase(verifyOtp.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(verifyOtp.fulfilled, (state, action) => {
+                state.loading = false;
+                state.accessToken = action.payload.access_token;
+                state.error = null;
+                
+                // Store the token in localStorage for persistence
+                if (action.payload.access_token) {
+                    localStorage.setItem('token', action.payload.access_token);
+                }
+            })
+            .addCase(verifyOtp.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload as string;
             });
     },
 });
 
-export const { setEmail, resendOtp } = otpSlice.actions;
+export const { setEmail, resendOtp, clearErrors } = otpSlice.actions;
 
 export default otpSlice.reducer;
